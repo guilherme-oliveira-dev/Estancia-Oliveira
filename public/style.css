@@ -1,0 +1,422 @@
+/* RESET BÁSICO */ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    color: #222;
+    background: #fff;
+}
+
+/* Fonte personalizada apenas no logo */
+@font-face {
+    font-family: 'Roadstore';
+    src: url('fontes/roadstore.ttf') format('truetype');
+}
+
+/* TOPO */
+.top-bar {
+    background: #111;
+    color: #fff;
+    text-align: right;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 5px 45px;
+    border-bottom: 1px solid #f2f2f2;
+    position: relative; /* para o menu absoluto */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 10px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.logo span {
+    font-family: 'Roadstore', serif;
+    font-size: 28px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* MENU */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+border-bottom: 2px solid #000;    
+transition: border-color 0.3s ease;
+}
+
+.menu li a:hover {
+    border-color: #000;
+}
+
+/* BOTÃO HAMBÚRGUER - escondido desktop */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #000;
+    margin-bottom: 4px;
+    border-radius: 2px;
+}
+
+/* HERO SECTION */
+.hero {
+    background: url('Imagens/paisagem.jpg') no-repeat center center/cover;
+    min-height: 750px;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1400px;
+    gap: 40px;
+}
+
+.hero-text {
+    max-width: 600px;
+    color: #fff;
+    text-align: left;
+    margin-right: 30px;
+}
+
+.info p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #fff;
+    color: #000;
+}
+
+.cavalo {
+    height: 450px;
+    object-fit: contain;
+}
+
+/* PEDIGREE */
+.pedigree-container {
+    text-align: center;
+    padding: 60px 20px;
+    background: url('Imagens/django.png') no-repeat center center/cover;
+    color: #000;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.titulo {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.tree ul {
+    padding-top: 20px;
+    position: relative;
+    display: table;
+    margin: 0 auto;
+}
+
+.tree li {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+    padding: 20px 5px 0 5px;
+    vertical-align: top;
+}
+
+.tree li::before, .tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    border-top: 2px solid #ccc;
+    width: 50%;
+    height: 20px;
+}
+
+.tree li::before {
+    left: -50%;
+}
+
+.tree li::after {
+    right: -50%;
+}
+
+.tree li:only-child::before, 
+.tree li:only-child::after {
+    display: none;
+}
+
+.tree li:only-child {
+    padding-top: 0;
+}
+
+.tree li:first-child::before,
+.tree li:last-child::after {
+    border: 0 none;
+}
+
+.tree span.horse {
+    border: 2px solid #fff;
+    padding: 8px 12px;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* VÍDEO DO CAVALO */
+.video-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #e07b07b8;
+}
+
+.video-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: 'Roadstore', serif;
+}
+
+/* RODAPÉ */
+footer {
+    background: #222;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.footer-info div {
+    margin: 10px;
+}
+
+.footer-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-info li {
+    margin: 5px 0;
+}
+
+.social-icons img {
+    margin-right: 8px;
+}
+
+/* RESPONSIVIDADE */
+
+/* Tablets e celulares grandes até 768px */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px 20px;
+    }
+
+    .menu {
+        gap: 20px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+        min-height: 500px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .button {
+        margin: 15px auto 0;
+    }
+
+    .pedigree-container {
+        padding: 40px 10px;
+    }
+
+    .titulo {
+        font-size: 24px;
+    }
+
+    .footer-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Celulares até 480px */
+@media (max-width: 480px) {
+    /* Menu escondido, hambúrguer visível */
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid #ccc;
+        z-index: 1000;
+        padding: 10px 0;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-toggle span {
+        background: #000;
+    }
+    
+    /* Ajusta padding e tamanho no hero */
+    .hero {
+        padding: 20px 10px;
+        min-height: 350px;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .pedigree-container {
+        padding: 30px 10px;
+    }
+
+    .titulo {
+        font-size: 20px;
+    }
+}
+.catalogo-cavalos {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.catalogo-cavalos h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card-cavalo {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
+  width: 260px;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-cavalo img {
+  width: 100%;
+  border-radius: 10px;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.card-cavalo h3 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.card-cavalo p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.card-cavalo .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.card-cavalo .button:hover {
+  background-color: #0056b3;
+}
+

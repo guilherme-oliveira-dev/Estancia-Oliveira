@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Unchained - Estância Oliveira</title>
+    <link rel="icon" href="Logos/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- TOPO DO SITE -->
+    <header>
+        <div class="top-bar">
+            
+        </div>
+       <nav class="navbar">
+    <div class="logo">
+        <img src="Logos/logo.png" alt="Estância Oliveira">
+        <span>ESTÂNCIA OLIVEIRA</span>
+    </div>
+    
+    <ul class="menu">
+        <li><a href="#contato">CONTATO</a></li>
+        <li><a href="/cadastro">Cadastro de Interesse</a></li>
+        <li><a href="/pedigree">Ver Pedigree</a></li>
+    </ul>
+</nav>
+
+    </header>
+
+   
+<!-- SESSÃO PRINCIPAL DO CAVALO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Django Unchained</h1>
+            <div class="info">
+                <h2>Elo Kafé da Nova</h2>
+                <p><strong>Descrição:</strong> Garanhão amplamente reconhecido no cenário do Mangalarga Marchador. Filho do consagrado Palhaço de Ituverava, Elo Kafé carrega uma herança de campeões nacionais, destacando-se pela combinação de força, resistência e elegância. Sua marcha picada é reconhecida pela suavidade e conforto, ideal para longas cavalgadas e provas de resistência.</p>
+
+                <h2>Sombra RB</h2>
+                <p><strong>Descrição:</strong> Égua de linhagem nobre, conhecida por sua beleza e versatilidade. Com marcha batida impecável, é apreciada tanto em provas de marcha quanto em atividades no campo. Sua genética tradicional confere resistência, agilidade e temperamento dócil, sendo representante exemplar da raça.</p>
+
+                <h2>Django Unchained</h2>
+                <p><strong>Descrição:</strong> Garanhão que reflete a excelência genética de seus pais. Com pelagem preta brilhante e porte imponente, combina a força e resistência de Elo Kafé da Nova com a elegância e versatilidade de Sombra RB. Sua marcha é suave e equilibrada, proporcionando conforto ao cavaleiro em qualquer terreno. Temperamento dócil e inteligente, é ideal tanto para competições quanto para trabalho no campo.</p>
+            </div>
+            <a href="#pedigree" class="button">Ver Genealogia Completa</a>
+        </div>
+       
+    </div>
+</section>
+
+
+
+    <!-- VÍDEO DO CAVALO CORRENDO -->
+    <section class="video-section">
+        <h2>Veja Django em Ação</h2>
+        <button class="button" onclick="playFullscreenVideo()">Assistir vídeo em tela cheia</button>
+        <video id="djangoVideo" width="720" style="display:none;">
+            <source src="videos/django.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </section>
+
+    <!-- PEDIGREE -->
+    <section class="pedigree-container" id="pedigree">
+        <h2 class="titulo">Genealogia de Django Unchained</h2>
+        <div class="tree">
+            <ul>
+                <li>
+                    <span class="horse">Elo Kafe da Nova</span>
+                    <ul>
+                        <li>
+                            <span class="horse">Omelete JB</span>
+                        </li>
+                        <li>
+                            <span class="horse">Franca ACE</span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="horse">Sombra RB</span>
+                    <ul>
+                        <li>
+                            <span class="horse">Feiticero LMN</span>
+                        </li>
+                        <li>
+                            <span class="horse">Gamada de G</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    <!-- Botão de Cadastrar Interesse -->
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="cadastrointerrese.html" class="btn-interesse">Cadastrar Interesse</a>
+    </div>
+</section>
+
+<!-- CSS adicionado no <head> -->
+<style>
+    .btn-interesse {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-interesse:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+    </section>
+
+       <!-- RODAPÉ -->
+    <footer>
+        <div class="footer-content">
+            <h2>O Agro não para</h2>
+            <div class="footer-info">
+                <div>
+                    
+                    <ul>
+                        
+                    </ul>
+                    <div>
+    <h3>Contato</h3>
+    <ul>
+        <li>Email: contato@estanciaoliveira.com</li>
+        <li>Telefone: +1 (781) 941-0695 </li>
+    </ul>
+    <a href="https://wa.me/17819410695?text=Ol%C3%A1%21%20Vi%20o%20cavalo%20Django%20no%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es." target="_blank" style="display:inline-block; background-color:#25D366; color:white; padding:10px 15px; margin-top:10px; border-radius:6px; text-decoration:none; font-weight:bold;">
+      💬 Falar no WhatsApp
+    </a>
+</div>
+
+                </div>
+                <div>
+                    <h3>Endereço</h3>
+                    <ul>
+                        <li>BR 364, KM 464</li>
+                        <li>jaru - RO</li>
+                    </ul>
+                </div>
+                <div class="footer-icon">
+                    <img src="Logos/logo.png" alt="Logo Estância Oliveira">
+                </div>
+            </div>
+        </div>
+
+    <!-- SCRIPT PARA FULLSCREEN DO VÍDEO -->
+    <script>
+        const video = document.getElementById('djangoVideo');
+
+        function playFullscreenVideo() {
+            video.style.display = 'block';
+
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) { /* Safari */
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { /* IE11 */
+                video.msRequestFullscreen();
+            }
+
+            video.play();
+        }
+
+        // Quando sair do fullscreen, pausar o vídeo
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                video.pause();
+                video.currentTime = 0;
+                video.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+    // Se foi redirecionado após cadastro, exibe o alerta
+    if (window.location.search.includes("sucesso=true")) {
+        alert("Cadastro de interesse realizado com sucesso!");
+        // remove o parâmetro da URL sem recarregar
+        window.history.replaceState({}, document.title, "pedigree.html");
+    }
+     </script>
+
+</body>
+</html>
