@@ -8,7 +8,8 @@
 body {
     font-family: 'Segoe UI', sans-serif;
     color: #222;
-    background: #fff;
+    background: url('Imagens/paisagem.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Fonte personalizada apenas no logo */
@@ -45,12 +46,12 @@ body {
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
 }
 
 .logo span {
     font-family: 'Roadstore', serif;
-    font-size: 28px;
+    font-size: 20px;
     color: #000;
     font-weight: bold;
 }
@@ -149,6 +150,10 @@ transition: border-color 0.3s ease;
     background: url('Imagens/django.png') no-repeat center center/cover;
     color: #000;
     text-shadow: 1px 1px 3px #000;
+}
+.pedigree-container h2 {
+  color: #ffffff; /* Azul, por exemplo */
+  /* Ou use outra cor que preferir, ex: #e07b07, #333, #555, etc */
 }
 
 .titulo {
@@ -369,6 +374,7 @@ footer {
   text-align: center;
   margin-bottom: 30px;
   font-size: 2rem;
+  color: #fff;
 }
 
 .cards-container {
@@ -420,3 +426,12 @@ footer {
   background-color: #0056b3;
 }
 
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalogo-cavalos {
+    flex: 1;
+}
