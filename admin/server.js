@@ -1,61 +1,32 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const path = require('path');
-
 const app = express();
-const PORT = 3001;
 
-// Configurações do EJS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: true }));
 
-// Middlewares
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Sessão
-app.use(session({
-  secret: 'senha-super-secreta',
-  resave: false,
-  saveUninitialized: true
-}));
-
-// Middleware para checar login
-function verificarLogin(req, res, next) {
-  if (req.session.usuario) {
-    next();
-  } else {
-    res.redirect('/login');
-  }
-}
-
-// Rotas
-app.get('/', verificarLogin, (req, res) => {
-  res.send('Bem-vindo à área administrativa!');
-});
-
+// Serve login.html
 app.get('/login', (req, res) => {
-  res.render('login');
+  res.sendFile(__dirname + '/login.html');
 });
 
+// Rota de login
 app.post('/login', (req, res) => {
-  const { usuario, senha } = req.body;
-  
-  // Simples verificação (depois substituímos por banco de dados)
-  if (usuario === 'admin' && senha === '1234') {
-    req.session.usuario = usuario;
-    res.redirect('/');
+  const { email, password } = req.body;
+
+  if (email === 'admin@estancia.com' && password === '123456') {
+    // Login ok, redireciona para dashboard
+    res.redirect('/dashboard');
   } else {
-    res.render('login', { erro: 'Usuário ou senha inválidos!' });
+    // Login falhou, retorna para login com mensagem
+    res.send('Usuário ou senha inválidos. <a href="/login">Tente novamente</a>');
   }
 });
 
-app.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.redirect('/login');
+// Dashboard simples
+app.get('/dashboard', (req, res) => {
+  res.send('<h1>Bem-vindo ao Painel Administrativo</h1><p><a href="/login">Sair</a></p>');
 });
 
+const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
