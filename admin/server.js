@@ -1,32 +1,35 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
-// Serve login.html
+// Serve arquivos estáticos da pasta public
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Rota para exibir a página de login
 app.get('/login', (req, res) => {
-  res.sendFile(__dirname + '/login.html');
+  res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Rota de login
+// Rota para processar o login
 app.post('/login', (req, res) => {
-  const { email, password } = req.body;
+  const { email, senha } = req.body;
 
-  if (email === 'admin@estancia.com' && password === '123456') {
-    // Login ok, redireciona para dashboard
+  if (email === 'admin@estancia.com' && senha === '123456') {
     res.redirect('/dashboard');
   } else {
-    // Login falhou, retorna para login com mensagem
     res.send('Usuário ou senha inválidos. <a href="/login">Tente novamente</a>');
   }
 });
 
-// Dashboard simples
+// Rota da dashboard
 app.get('/dashboard', (req, res) => {
-  res.send('<h1>Bem-vindo ao Painel Administrativo</h1><p><a href="/login">Sair</a></p>');
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
+// Inicia o servidor
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor admin rodando em http://localhost:${PORT}`);
 });
