@@ -44,7 +44,7 @@ app.post('/login', (req, res) => {
 
 // Rota dashboard protegida por autenticação
 app.get('/dashboard', checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin', 'public', 'dashboard.html'));
+  res.sendFile(path.join(__dirname,'public', 'dashboard.html'));
 });
 
 // Rota para logout (finaliza sessão)
