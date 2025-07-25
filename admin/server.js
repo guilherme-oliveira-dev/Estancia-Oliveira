@@ -50,10 +50,66 @@ app.get('/dashboard', checkAuth, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
-// ➕ NOVO: rota protegida para página de cavalos
+// ✅ nova rota /cavalos com listagem do banco
 app.get('/cavalos', checkAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'cavalos.html'));
+  const sql = 'SELECT * FROM cavalos';
+
+  db.query(sql, (err, resultados) => {
+    if (err) {
+      console.error('Erro ao buscar cavalos:', err);
+      return res.send('Erro ao carregar cavalos');
+    }
+
+    let html = `
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Gerenciar Cavalos</title>
+      </head>
+      <body>
+        <h1>Lista de Cavalos</h1>
+        <a href="/dashboard">⬅ Voltar ao Painel</a> |
+        <a href="/cavalos/novo">➕ Adicionar Novo Cavalo</a>
+        <br><br>
+        <table border="1" cellpadding="8">
+          <thead>
+            <tr>
+              <th>Registro</th>
+              <th>Nome</th>
+              <th>Pelagem</th>
+              <th>Idade</th>
+              <th>Linhagem</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+    `;
+
+    resultados.forEach((cavalo) => {
+      html += `
+        <tr>
+          <td>${cavalo.registro}</td>
+          <td>${cavalo.nome}</td>
+          <td>${cavalo.pelagem}</td>
+          <td>${cavalo.idade}</td>
+          <td>${cavalo.linhagem}</td>
+          <td><a href="/cavalos/excluir/${cavalo.registro}" onclick="return confirm('Tem certeza que deseja excluir?')">🗑️ Excluir</a></td>
+        </tr>
+      `;
+    });
+
+    html += `
+          </tbody>
+        </table>
+      </body>
+      </html>
+    `;
+
+    res.send(html);
+  });
 });
+
+
 
 // Logout
 app.get('/logout', (req, res) => {
@@ -74,16 +130,30 @@ app.get('/cavalos/novo', checkAuth, (req, res) => {
 
 // Rota POST para salvar no banco
 app.post('/cavalos/criar', checkAuth, (req, res) => {
-  const { nome, pelagem, idade, linhagem } = req.body;
+  const { registro, nome, pelagem, idade, linhagem } = req.body;
 
-  const sql = 'INSERT INTO cavalos (nome, pelagem, idade, linhagem) VALUES (?, ?, ?, ?)';
-  db.query(sql, [nome, pelagem, idade, linhagem], (err, result) => {
+  const sql = 'INSERT INTO cavalos (registro, nome, pelagem, idade, linhagem) VALUES (?, ?, ?, ?, ?)';
+  db.query(sql, [registro, nome, pelagem, idade, linhagem], (err) => {
     if (err) {
       console.error('Erro ao inserir cavalo:', err);
-      return res.send('Erro ao salvar cavalo');
+      return res.send('Erro ao salvar cavalo (registro pode estar duplicado)');
     }
 
-    console.log('Cavalo cadastrado com ID:', result.insertId);
+    console.log('Cavalo cadastrado com registro:', registro);
+    res.redirect('/cavalos');
+  });
+});
+app.get('/cavalos/excluir/:registro', checkAuth, (req, res) => {
+  const { registro } = req.params;
+
+  const sql = 'DELETE FROM cavalos WHERE registro = ?';
+  db.query(sql, [registro], (err) => {
+    if (err) {
+      console.error('Erro ao excluir cavalo:', err);
+      return res.send('Erro ao excluir cavalo');
+    }
+
+    console.log(`Cavalo com registro ${registro} excluído.`);
     res.redirect('/cavalos');
   });
 });
