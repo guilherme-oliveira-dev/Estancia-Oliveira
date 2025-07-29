@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Novo Pedigree</title>
+</head>
+<body>
+  <h1>Cadastrar Pedigree</h1>
+
+  <form action="/pedigrees/criar" method="post">
+    <label>Nome do Cavalo: <input type="text" name="cavalo_nome" required></label><br><br>
+    <label>Pai: <input type="text" name="pai_nome"></label><br>
+    <label>Mãe: <input type="text" name="mae_nome"></label><br><br>
+    
+    <label>Avô Paterno: <input type="text" name="avo_paterno_nome"></label><br>
+    <label>Avó Paterna: <input type="text" name="avo_paterna_nome"></label><br><br>
+    
+    <label>Avô Materno: <input type="text" name="avo_materno_nome"></label><br>
+    <label>Avó Materna: <input type="text" name="avo_materna_nome"></label><br><br>
+
+    <button type="submit">Salvar</button>
+  </form>
+
+  <a href="/dashboard">⬅ Voltar ao painel</a>
+</body>
+</html>

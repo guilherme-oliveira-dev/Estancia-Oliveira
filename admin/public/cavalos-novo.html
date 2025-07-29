@@ -6,15 +6,16 @@
   <title>Novo Cavalo</title>
 </head>
 <body>
-  <h1>Adicionar Novo Cavalo</h1>
-  <form action="/cavalos/criar" method="post">
-  <label>Registro Mangalarga: <input type="text" name="registro" required></label><br>
+ <form action="/cavalos/criar" method="post" enctype="multipart/form-data">
+  <label>Registro: <input type="text" name="registro" required></label><br>
   <label>Nome: <input type="text" name="nome" required></label><br>
   <label>Pelagem: <input type="text" name="pelagem"></label><br>
   <label>Idade: <input type="number" name="idade"></label><br>
   <label>Linhagem: <input type="text" name="linhagem"></label><br>
+  <label>Foto: <input type="file" name="foto"></label><br>
   <button type="submit">Salvar</button>
 </form>
+
 
   <a href="/cavalos">⬅ Voltar</a>
 </body>
